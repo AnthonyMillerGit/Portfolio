@@ -1,61 +1,86 @@
-// src/components/Header.js
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+`;
 
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #212121; // Dark Gray background
-  color: #14FFEC; // Cyan text for contrast
-  padding: 20px 10px; // Adjusted for better spacing on all devices
+  background-color: #212121;
+  color: #14FFEC;
+  padding: 20px 10px;
   text-align: center;
   position: sticky;
   top: 0;
   transition: all 0.5s ease-in-out;
   z-index: 100;
-  border-radius: 30px; /* Adjust the radius as needed */
-  overflow: hidden; /* Ensures content respects the border radius */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
   @media (max-width: 768px) {
-    padding: 18px 8px; // Slightly reduce padding for tablets
+    padding: 18px 8px;
   }
 
   @media (max-width: 480px) {
-    padding: 15px 5px; // Reduce padding for mobile devices
+    padding: 15px 5px;
   }
 `;
 
 const NavigationLink = styled.a`
-  color: #0D7377; // Teal links
+  color: #0D7377;
   text-decoration: none;
-  margin: 0 100px; // Increased spacing
+  margin: 0 15px;
   font-size: 1.8rem;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 
-  &:hover {
-    color: #14FFEC; // Cyan on hover
+  &:hover, &:focus {
+    color: #14FFEC;
     transform: translateY(-2px);
   }
 
-  @media (max-width: 768px) {
-    margin: 0 15px;
-  }
-
-  @media (max-width: 480px) {
-    margin: 0 10px;
+  &:active {
+    color: lightgray;
   }
 `;
 
-const Header = () => (
-  <HeaderContainer>
-    <nav>
-      <NavigationLink href="#about">About</NavigationLink>
-      <NavigationLink href="#projects">Projects</NavigationLink>
-      <NavigationLink href="#contact">Contact</NavigationLink>
-    </nav>
-  </HeaderContainer>
-);
+const MenuIcon = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    cursor: pointer;
+  }
+`;
+
+const NavLinksContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  @media (max-width: 768px) {
+    display: ${props => props.isOpen ? 'flex' : 'none'};
+    flex-direction: column;
+  }
+`;
+
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <GlobalStyle />
+      <HeaderContainer>
+        <MenuIcon onClick={() => setIsOpen(!isOpen)}>☰</MenuIcon>
+        <NavLinksContainer isOpen={isOpen}>
+          <NavigationLink href="#about" aria-label="About Me">About</NavigationLink>
+          <NavigationLink href="#projects" aria-label="My Projects">Projects</NavigationLink>
+          <NavigationLink href="#contact" aria-label="Contact Me">Contact</NavigationLink>
+        </NavLinksContainer>
+      </HeaderContainer>
+    </>
+  );
+};
 
 export default Header;
