@@ -1,12 +1,14 @@
 import React from 'react';
-import { SectionContainer, SectionTitle, SectionText } from '../Components/Styles/SharedStyles';
 import styled from 'styled-components';
-import { FaCode, FaLaptopCode, FaAward } from 'react-icons/fa';
+import { FaCode, FaLaptopCode } from 'react-icons/fa'; // Updated to only include necessary icons
+
+import { SectionContainer, SectionTitle, SectionText } from '../Components/Styles/SharedStyles';
 
 const SkillsContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center; // Center the items horizontally
+  gap: 40px; // Creates space between the flex items
+  flex-wrap: wrap; // Allows items to wrap in smaller screens
 `;
 
 const Skill = styled.div`
@@ -14,6 +16,7 @@ const Skill = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 10px;
+  flex-basis: 20%; // Assigns a base width to each skill section
 `;
 
 const SkillIcon = styled.div`
@@ -26,29 +29,21 @@ const SkillIcon = styled.div`
   transition: color 0.3s ease, transform 0.3s ease;
 `;
 
-const SkillText = styled(SectionText)`
-  color: #323232; // Medium Grey for Text
-`;
-
 const AboutMe = () => (
   <SectionContainer>
-    <SectionTitle style={{ color: "#212121" }}>About Me</SectionTitle>
-    <SectionText style={{ color: "#323232" }}>
+    <SectionTitle>About Me</SectionTitle>
+    <SectionText>
       Here's a brief overview of who I am, my journey, and what I love doing. 
       Dive into the details of my projects below to see the work I'm most proud of.
     </SectionText>
     <SkillsContainer>
       <Skill>
         <SkillIcon><FaCode /></SkillIcon>
-        <SkillText>Development</SkillText>
+        <SectionText>Development</SectionText>
       </Skill>
       <Skill>
         <SkillIcon><FaLaptopCode /></SkillIcon>
-        <SkillText>Design</SkillText>
-      </Skill>
-      <Skill>
-        <SkillIcon><FaAward /></SkillIcon>
-        <SkillText>Achievements</SkillText>
+        <SectionText>Design</SectionText>
       </Skill>
     </SkillsContainer>
   </SectionContainer>
