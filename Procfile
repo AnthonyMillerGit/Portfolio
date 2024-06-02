@@ -1,1 +1,1 @@
-web: cd Server && ./debug.sh
+web: cd Server && go build -o bin/app && ./bin/app
