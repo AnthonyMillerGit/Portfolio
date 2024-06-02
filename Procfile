@@ -1,1 +1,1 @@
-web: go run Server/main.go
+web: cd Server && go build -o bin/app && ./bin/app
