@@ -1,1 +1,1 @@
-My Portfolio Website is made with React and Go
+My Portfolio Website is made with React and Go and deployed with Heroku
