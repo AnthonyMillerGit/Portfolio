@@ -1,1 +1,1 @@
-web: cd Server && ls -la > /tmp/ls_output && cat /tmp/ls_output && sleep 5 && go build -o bin/app && ./bin/app
+web: cd Server && ./debug.sh
