@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SectionContainer, SectionTitle, SectionText } from '../Components/Styles/SharedStyles';
-import profilePic from './Media/Didier.jpeg';
+import profilePic from '../Media/Didier.jpeg';
 
 const EntireContainer = styled.div`
   display: flex;
