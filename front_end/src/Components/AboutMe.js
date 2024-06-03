@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SectionContainer, SectionTitle, SectionText } from '../Components/Styles/SharedStyles';
-import profilePic from '../Media/Didier.jpeg';
+import profilePic from './Media/Didier.jpeg';
 
 const EntireContainer = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const AboutMeContent = styled.div`
 const AboutMe = () => (
   <SectionContainer>
     <EntireContainer id="about">
-      <ProfilePicture src={profilePic} alt="Your Name" />
+      <ProfilePicture src={profilePic} alt="didierDogba" />
       <AboutMeContent>
         <SectionTitle>About Me</SectionTitle>
         <SectionText>
